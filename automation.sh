@@ -1,8 +1,8 @@
 #!/bin/sh
-s3_bucket=upgrad-manjari
-filename=/var/www/html/inventory.html
+s3_bucket="upgrad-manjari"
+filename="/var/www/html/inventory.html"
 timestamp=$(date '+%d%m%Y-%H%M%S')
-name=manjari
+name="manjari"
 sudo apt-get update
 sudo apt-get install awscli
 sudo apt install apache2
