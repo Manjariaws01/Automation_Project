@@ -2,6 +2,7 @@
 s3_bucket=upgrad-manjari
 filename=/var/www/html/inventory.html
 timestamp=$(date '+%d%m%Y-%H%M%S')
+name=manjari
 sudo apt-get update
 sudo apt-get install awscli
 sudo apt install apache2
@@ -14,8 +15,8 @@ else
   sudo systemctl enable apache2
 fi
 
-tar cvf /tmp/manjari-httpd-logs-${timestamp}.tar /var/log/apache2
-aws s3 cp /tmp/manjari-httpd-logs-${timestamp}.tar s3://${s3_bucket}/manjari-httpd-logs-${timestamp}.tar
+tar cvf /tmp/${name}-httpd-logs-${timestamp}.tar /var/log/apache2
+aws s3 cp /tmp/${name}-httpd-logs-${timestamp}.tar s3://${s3_bucket}/${name}-httpd-logs-${timestamp}.tar
 size=$(sudo du -sh /tmp/manjari-httpd-logs-${timestamp}.tar | awk '{print $1}')
 if [ -e "${filename}" ]
 then
